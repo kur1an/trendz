@@ -8,14 +8,11 @@ function Books({ booksData }) {
           <Col sm={12} md={6} lg={4} xl={3} className="d-flex" key={i}>
             <Card className="book-card">
               <Image src={book.booksImage} fluid /> 
-              {/* ✅ use book.booksImage, not booksData.bookImage */}
 
               <Card.Body className="d-flex flex-column">
                 <Card.Title>{book.booksName}</Card.Title>
-                {/* ✅ use book.booksName */}
 
                 <Card.Text>{book.booksDiscripption}</Card.Text>
-                {/* ✅ use book.booksDiscripption */}
 
                 <Button variant="primary" className="mt-auto">
                   Add to cart

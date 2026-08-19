@@ -2,51 +2,71 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import './NavBar.css'
+import { Link } from "react-router-dom";
+
+import "./NavBar.css";
 
 function NavBars() {
   return (
-    <Navbar expand="lg" className=" bg-danger-subtle">
+    <Navbar expand="lg" className="bg-warning-subtle">
       <Container>
-        <Navbar.Brand href="/">Trendz</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" className="fw-bold">
+          Trendz
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/" className=" fw-bold">
+            <Nav.Link as={Link} to="/" className="fw-bold">
               Home
             </Nav.Link>
-            <Nav.Link href="/products" className=" fw-bold">
-              Products
+            <Nav.Link as={Link} to="/products" className="fw-bold">
+              Phones
             </Nav.Link>
-            <Nav.Link href="#link" className=" fw-bold">
+            <Nav.Link as={Link} to="/cart" className="fw-bold">
               Cart
             </Nav.Link>
-
- <Nav.Link href="/Books" className=" fw-bold">
+            <Nav.Link as={Link} to="/books" className="fw-bold">
               Books
             </Nav.Link>
-            
-          </Nav>
-          <Nav className=" NavRight ms-auto">
-            <Nav.Link href="#home" className=" fw-bold">
-              Home
-            </Nav.Link>
-            <Nav.Link href="#link" className=" fw-bold">
-              Products
-            </Nav.Link>
-            <Nav.Link href="#link" className=" fw-bold">
-              Cart
-            </Nav.Link>
-
-            <NavDropdown title="Footwear" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Shoes</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Crocs</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Chapels</NavDropdown.Item>
+<NavDropdown title="Footwear" id="basic-nav-dropdown">
+              <NavDropdown.Item as={Link} to="/shoes">
+                Shoes
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/crocs">
+                Crocs
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/chapels">
+                Chapels
+              </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item as={Link} to="/footwear/other">
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
+
+
+          </Nav>
+
+          <Nav className="NavRight ms-auto">
+            <Nav.Link as={Link} to="/search" className="fw-bold">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search-heart-fill" viewBox="0 0 16 16">
+  <path d="M6.5 13a6.47 6.47 0 0 0 3.845-1.258h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1A6.47 6.47 0 0 0 13 6.5 6.5 6.5 0 0 0 6.5 0a6.5 6.5 0 1 0 0 13m0-8.518c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018"/>
+</svg>
+
+  </Nav.Link>
+            <Nav.Link as={Link} to="/login" className="fw-bold">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+</svg>
+            </Nav.Link>
+            <Nav.Link as={Link} to="/cart" className="fw-bold">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bag-heart-fill" viewBox="0 0 16 16">
+  <path d="M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m0 6.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
+</svg>
+            </Nav.Link>
+
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

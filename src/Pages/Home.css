@@ -1,0 +1,41 @@
+.homeCarousel {
+
+
+h3{
+font-family: monospace;
+font-size: 16px;
+font-weight: bold;
+background-color: rgba(216, 213, 14, 0.568);
+border-radius: 1rem;
+padding: 5px 0px;
+color: black;
+
+}
+
+.btn{
+background-color: rgba(230, 208, 9, 0.145);
+color: black;
+margin: 2rem;
+border: 0;
+border-radius: 1rem;
+padding: 1rem;
+}
+.btn:hover{
+background-color: rgb(255, 242, 0);
+
+}
+
+.img{
+background:linear-gradient(rgba(0,0,0,0.5));
+background-color: rgba(0,0,0,0.5);
+}
+
+.img:hover{
+
+background:linear-gradient(rgba(0,0,0,0.5));
+background-color: rgba(0,0,0,0.5);
+
+}
+
+
+}

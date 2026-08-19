@@ -2,11 +2,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header";
 import ControlledCarousel from "./components/Caro";
 import Books from "./components/Books";
+import Home from "./Pages/Home";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProductDetails from "./Pages/ProductDetails";
+import Footer from "./components/Footer";
 
 function App() {
-  const Products = [
+  const products = [
     {
       id: 1,
       productName: "Apple iPhone 17 Pro",
@@ -17,7 +20,7 @@ function App() {
     },
     {
       id: 2,
-      productName: "Apple iPhone 17 Pro, 256GB Cosmic Orange • Priser",
+      productName: "Apple iPhone 17",
       productPrice: 1300,
       productDiscripption: "pool discription",
       productImage:
@@ -32,58 +35,60 @@ function App() {
         "https://tse4.mm.bing.net/th/id/OIP.C_2sYgBPnBnPj4EK701hGwHaPG?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     },
     {
-      id: 1,
-      productName: "Apple iPhone 17 Pro",
+      id: 4,
+      productName: "Apple iPhone Air",
       productPrice: 1200,
       productDiscripption: "robot discription",
       productImage:
         "https://media.ldlc.com/r1600/ld/products/00/06/27/53/LD0006275305_0006275340.jpg",
     },
     {
-      id: 2,
-      productName: "Apple iPhone 17 Pro, 256GB Cosmic Orange • Priser",
-      productPrice: 1300,
-      productDiscripption: "pool discription",
+      id: 5,
+      productName: "Samsung Galaxy S25FE Smartphone",
+      productPrice: 54999,
+      productDiscripption: "Samsung Galaxy S25FE Smartphone",
       productImage:
-        "https://tse3.mm.bing.net/th/id/OIP.0Vdm4tSHkoiKGCHp4LOGaQHaJK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "https://m.media-amazon.com/images/I/61L3RPvzp3L.jpg",
     },
     {
-      id: 3,
-      productName: "Apple iPhone 17 Pro, 256GB",
-      productPrice: 1500,
-      productDiscripption: "slide discription",
+      id: 6,
+      productName: "Google Pixel 8",
+      productPrice: 75999,
+      productDiscripption: "Google Pixel 8",
       productImage:
-        "https://tse3.mm.bing.net/th/id/OIP.0Vdm4tSHkoiKGCHp4LOGaQHaJK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQS37uZr-QoFQLTyFwtu0QigFrdVtiRn-VhnPqHzbct2rF8_gJw1kointXTDtNm9zn3Xdx1IFes0l4Hk_Jonot5tMqi-0AurbGd0xuEp0V054Qzm2mu7jaa6A",
     },
     {
-      id: 1,
-      productName: "Apple iPhone 17 Pro",
-      productPrice: 1200,
+      id: 7,
+      productName: "Google Pixel 8 Pro 5G",
+      productPrice: 64070,
       productDiscripption: "robot discription",
       productImage:
-        "https://tse3.mm.bing.net/th/id/OIP.0Vdm4tSHkoiKGCHp4LOGaQHaJK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcROWw04bmX2yDFiPH3hL6X0p94uKzNIQbsVttiQlrdUUwMOYM2G6JPGYBMnK3kSilDTyGgpeXOUk7Qb2P3OA73LSd7bdeD5jMGCuGsIqwI719Irf5fIoQ0mtw",
     },
     {
-      id: 2,
-      productName: "Apple iPhone 17 Pro, 256GB Cosmic Orange • Priser",
+      id: 8,
+      productName: "Apple iPhone 17 Pro, 256GB Cosmic ",
       productPrice: 1300,
       productDiscripption: "pool discription",
       productImage:
         "https://tse3.mm.bing.net/th/id/OIP.0Vdm4tSHkoiKGCHp4LOGaQHaJK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     },
     {
-      id: 3,
+      id: 9,
       productName: "Apple iPhone 17 Pro, 256GB",
       productPrice: 1500,
       productDiscripption: "slide discription",
       productImage:
         "https://tse3.mm.bing.net/th/id/OIP.0Vdm4tSHkoiKGCHp4LOGaQHaJK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-    },
+    
+
+},
   ];
   const booksData = [
     {
       id: 11,
-      booksName: "Apple iPhone 17 Pro",
+      booksName: "everything ",
       booksPrice: 1200,
       booksDiscripption: "robot discription",
       booksImage:
@@ -91,7 +96,7 @@ function App() {
     },
     {
       id: 12,
-      booksName: "Apple iPhone 17 Pro",
+      booksName: "this is how",
       booksPrice: 1200,
       booksDiscripption: "robot discription",
       booksImage:
@@ -182,12 +187,12 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/Books" element={<Books booksData={booksData} />} />
-        <Route
-          path="/products"
-          element={<ControlledCarousel products={Products} />}
-        />
+        <Route path="/" element={<Home/>} />
+        <Route path="/books" element={<Books booksData={booksData} />} />
+        <Route path="/products"element={<ControlledCarousel products={products} />}/>
+  <Route path="/products/:id" element={<ProductDetails products={products} />} />
       </Routes>
+<Footer/>
     </BrowserRouter>
   );
 }

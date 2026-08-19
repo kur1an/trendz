@@ -1,0 +1,28 @@
+img{
+width: 350px;
+height: 400px;
+margin: 20px;
+}
+
+.product-details{
+background: linear-gradient(rgba(234, 223, 123, 0.5));
+padding: 3rem;
+border-radius: 30px;
+backdrop-filter: blur(2rem);
+box-shadow: 8rem;
+font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.product-details .btn{
+border-radius: 2rem;
+padding: 0.5rem;
+background-color: rgb(203, 254, 0);
+border: 0;
+
+
+
+}
+.product-details .btn:hover{
+background-color: beige;
+
+
+}
