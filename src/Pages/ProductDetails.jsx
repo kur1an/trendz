@@ -1,9 +1,24 @@
-import { useParams } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { Button, Image } from "react-bootstrap";
 import './ProductDetails.css'
-function ProductDetails({ products }) {
+import { useState } from "react";
+function ProductDetails({ products,handleCartCountIncrement }) {
   const { id } = useParams();
   const product = products.find((p) => p.id === parseInt(id));
+
+
+
+  const [addCart, setAddCart] = useState(true);
+
+  const handleHide = () => {
+    setAddCart(!addCart); 
+  };
+
+
+
+  
+
+
 
 if(!product){
 return(
@@ -26,8 +41,26 @@ Invalid Product ID
           <h2>{product.productName}</h2>
           <p>{product.productDiscripption}</p> 
           <p>Price: ${product.productPrice}</p>
-<Button className="  text-black"> Add to Cart    </Button>
-        </div>
+
+
+
+  
+
+     <Button  className="m-5 btn-toolbar bg-secondary"   onClick={handleCartCountIncrement}
+>Items:  + </Button>
+
+
+    <Button  onClick={handleHide} 
+className={addCart ? "text-black btn-success" : "text-black btn-danger bg-warning"}
+    
+>
+      {addCart ? "Add Cart" : "Added to Cart >"}
+
+    
+    </Button>
+
+   
+      </div>
       </div>
 </>
   );

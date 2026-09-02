@@ -7,6 +7,9 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProductDetails from "./Pages/ProductDetails";
 import Footer from "./components/Footer";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
+import { useState } from "react";
 
 function App() {
   const products = [
@@ -183,15 +186,28 @@ function App() {
         "https://m.media-amazon.com/images/I/31IZ0cd2NyL._SY445_SX342_.jpg",
     },
   ];
+
+const [cartCount, setCartCount] = useState(0);
+
+
+function handleCartCountIncrement() {
+    setCartCount(cartCount + 1); 
+  }
+
+
   return (
     <BrowserRouter>
-      <Header />
+      <Header cartCount={cartCount} />
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/books" element={<Books booksData={booksData} />} />
-        <Route path="/products"element={<ControlledCarousel products={products} />}/>
-  <Route path="/products/:id" element={<ProductDetails products={products} />} />
-      </Routes>
+        <Route path="/products"element={<ControlledCarousel products={products} handleCartCountIncrement={handleCartCountIncrement}  />}/>
+  <Route path="/products/:id" element={<ProductDetails products={products}   />} />
+     <Route path="/login" element={<Login/>} />
+     <Route path="/signup" element={<Signup/>} />
+ </Routes>
+
+
 <Footer/>
     </BrowserRouter>
   );

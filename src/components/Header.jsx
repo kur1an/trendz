@@ -1,14 +1,14 @@
 import NavBars from "./NavBar";
 
 
-function Header()
+function Header({cartCount})
 {
 
 return (
 <>
     
     
-<NavBars/>
+<NavBars  cartCount={cartCount}/>
 </>
 )
 }
