@@ -4,17 +4,36 @@ const userSlice = createSlice({
   name: "userSlice",
   initialState: {
     users: JSON.parse(localStorage.getItem("users")) || [],
-    user: null,
-    isAuthenticated: false,
+  user: JSON.parse(localStorage.getItem("user")) || [],
+  isAuthenticated: JSON.parse(localStorage.getItem("isAuthenticated")) || false,
   },
+
+
+
+
+
   reducers: {
     userRegister: (state, action) => {
       state.users.push(action.payload);
-localStorage.setItem("users", JSON.stringify(state.users));
+      localStorage.setItem("users", JSON.stringify(state.users));
     },
-    userLogin: () => {},
+    userLogin: (state, action) => {
+      state.user = action.payload;
+      state.isAuthenticated = true;
+      localStorage.setItem("user", JSON.stringify(state.user));
+      localStorage.setItem(
+        "isAuthenticated",
+        JSON.stringify(state.isAuthenticated),
+      );
+    },
+    userLogout: (state) => {
+      state.user = null;
+      state.isAuthenticated = false;
+      localStorage.removeItem("user");
+      localStorage.removeItem("isAuthenticated");
+    },
   },
 });
 
-export const { userRegister, userLogin } = userSlice.actions;
+export const { userRegister, userLogin, userLogout } = userSlice.actions;
 export default userSlice.reducer;

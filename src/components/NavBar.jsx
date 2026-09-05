@@ -2,11 +2,22 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./NavBar.css";
+import { useDispatch } from "react-redux";
+import { userLogout } from "../redux/userSlice";
+import { toast } from "react-toastify";
 
 function NavBars({cartCount}) {
+const dispatch = useDispatch();
+const navigate = useNavigate();
+
+const handleLogout = ()=>{
+dispatch(userLogout());
+toast.success("User Logout Sucessfully!!");
+navigate("/login")
+}
 
   return (
     <Navbar expand="lg" className="bg-warning-subtle">
@@ -27,21 +38,7 @@ function NavBars({cartCount}) {
             <Nav.Link as={Link} to="/books" className="fw-bold">
               Books
             </Nav.Link>
-<NavDropdown title="Footwear" id="basic-nav-dropdown">
-              <NavDropdown.Item as={Link} to="/shoes">
-                Shoes
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/crocs">
-                Crocs
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/chapels">
-                Chapels
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item as={Link} to="/footwear/other">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+
 
 
           </Nav>
@@ -67,6 +64,31 @@ function NavBars({cartCount}) {
 
             
           </Nav>
+
+<NavDropdown title="Admin" id="basic-nav-dropdown">
+              <NavDropdown.Item as={Link} to="/admin/addproduct">
+                Add Products
+              </NavDropdown.Item>
+<NavDropdown.Item as={Link} to="/admin/listproducts">
+                List Products
+              </NavDropdown.Item>
+<NavDropdown.Item as={Link} to="/admin/listusers">
+                List Users
+              </NavDropdown.Item>
+
+              <NavDropdown.Item as={Link} to="/admin/admindash">
+                Admin Dash
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/chapels">
+                User Dash
+              </NavDropdown.Item>
+
+
+              <NavDropdown.Divider />
+              <NavDropdown.Item as={Link} onClick={handleLogout} to="/login">
+                Logout
+              </NavDropdown.Item>
+            </NavDropdown>
         </Navbar.Collapse>
       </Container>
     </Navbar>

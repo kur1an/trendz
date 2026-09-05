@@ -2,15 +2,17 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as formik from "formik";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { userRegister } from "../redux/userSlice";
+import { toast } from "react-toastify";
 
 function Signup() {
   const { Formik } = formik;
 const dispatch = useDispatch();
+const navigate = useNavigate();
 
   const schema = yup.object().shape({
     fullname: yup
@@ -27,6 +29,9 @@ const dispatch = useDispatch();
     values.role ='user';
     values.status =true;
 dispatch(userRegister(values));
+toast.success("Signup  Succesfully!!");
+navigate("/login");
+
 
 
 // console.log("", values);

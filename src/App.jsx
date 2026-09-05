@@ -10,6 +10,12 @@ import Footer from "./components/Footer";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import { useState } from "react";
+import Addproduct from "./Admin/Pages/Addproduct";
+import { ToastContainer } from "react-toastify";
+import Admindash from "./Admin/Admindash";
+import Listproducts from "./Admin/Pages/ListProducts";
+import Editproduct from "./Admin/Pages/Editproduct";
+import Listusers from "./Admin/Pages/Listusers";
 
 function App() {
   const products = [
@@ -198,6 +204,7 @@ function handleCartCountIncrement() {
   return (
     <BrowserRouter>
       <Header cartCount={cartCount} />
+<ToastContainer position="top-center" autoClose={1000} />
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/books" element={<Books booksData={booksData} />} />
@@ -205,6 +212,13 @@ function handleCartCountIncrement() {
   <Route path="/products/:id" element={<ProductDetails products={products}   />} />
      <Route path="/login" element={<Login/>} />
      <Route path="/signup" element={<Signup/>} />
+<Route path="/admin/addproduct" element={<Addproduct/>} />
+<Route path="/admin/admindash" element={<Admindash/>} />
+<Route path="/admin/listproducts" element={<Listproducts/>} />
+<Route path="/admin/editproduct/:id" element={<Editproduct/>} />
+<Route path="/admin/listusers" element={<Listusers/>} />
+
+
  </Routes>
 
 
